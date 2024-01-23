@@ -1,0 +1,47 @@
+<div>
+<div>
+  <h1>Bienvenido,
+    {{userToRender.first_name}}
+    {{userToRender.last_name}}
+    ({{userToRender.role}})
+  </h1>
+  <button id="logoutButton" class="logoutButton">Cerrar sesión</button>
+</div>
+
+  <h2>Lista de productos:</h2>
+
+  <ul>
+    {{#each productsToRender.docs as |product|}}
+      <li>
+        <h2>Producto: {{product.title}}</h2>
+        <p>Descripción: {{product.description}}</p>
+        <p>Precio: $ {{product.price}}</p>
+        <button
+          class="addProductToCart"
+          data-cid="{{cartId}}"
+          data-pid="{{product._id}}"
+          onclick="addToCart('{{cartId}}', '{{product._id}}')"
+          type="button"
+        >Agregar al Carrito</button>
+      </li>
+    {{/each}}
+  </ul>
+
+  {{#if productsToRender.prevPage}}
+    <div class="pagination-button">
+      <button><a
+          href="/api/products/?page={{productsToRender.prevPage}}"
+        >Anterior</a></button>
+    </div>
+  {{/if}}
+
+  {{#if productsToRender.nextPage}}
+    <div class="pagination-button">
+      <button><a
+          href="/api/products/?page={{productsToRender.nextPage}}"
+        >Siguiente</a></button>
+    </div>
+  {{/if}}
+</div>
+
+<script src="/js/add.products.js"></script>

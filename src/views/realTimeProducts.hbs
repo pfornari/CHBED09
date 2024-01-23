@@ -1,0 +1,45 @@
+<div>
+    <h1>Bienvenido a real time products.</h1>
+</div>
+
+<div>
+    <h2>Crear Producto</h2>
+
+    <form action="/realtimeproducts" method="post" id="realTimeProducts">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+
+        <label for="thumbnail">URL de la Miniatura:</label>
+        <input type="text" id="thumbnail" name="thumbnail" required>
+
+        <label for="code">Código:</label>
+        <input type="text" id="code" name="code" required>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
+
+        <label for="status">Estado:</label>
+        <select id="status" name="status" required>
+            <option value="true">Disponible</option>
+            <option value="false">Agotado</option>
+        </select>
+
+        <label for="category">Categoría:</label>
+        <input type="text" id="category" name="category" required>
+
+        <button type="submit">Crear Producto</button>
+    </form>
+</div>
+
+<div id="products">
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/form.js"></script>
